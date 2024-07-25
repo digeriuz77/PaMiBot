@@ -1,5 +1,4 @@
 import streamlit as st
-import openai
 from openai import OpenAI
 import time
 import nltk
@@ -219,6 +218,10 @@ welcome_messages = [
 
 def main():
     st.title("✨VHL Physical Activity Coachbot")
+
+    if not change_talk_data:
+        st.error("Change talk data could not be loaded. Please check the data file.")
+        return
 
     if "welcome_subheader" not in st.session_state:
         st.session_state.welcome_subheader = random.choice(welcome_messages)
